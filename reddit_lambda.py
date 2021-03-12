@@ -12,7 +12,8 @@ class User:
 
     def upvote_thread(self, thread):
         now = datetime.datetime.now()
-        vote = Vote(up=True, time_voted=now, voter=self.username, thread=thread)
+        vote = Vote(up=True, time_voted=now,
+                    voter=self.username, thread=thread)
         return vote
 
 
