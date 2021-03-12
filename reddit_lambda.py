@@ -1,4 +1,4 @@
-
+import datetime
 
 
 
@@ -10,8 +10,9 @@ class User:
         self.banned = False
 
 
-    def upvote_thread(self, thread, time_voted):
-        vote = Vote(up=True, time_voted=time_voted, voter=self.username, thread=thread)
+    def upvote_thread(self, thread):
+        now = datetime.datetime.now()
+        vote = Vote(up=True, time_voted=now, voter=self.username, thread=thread)
         return vote
 
 
@@ -56,7 +57,7 @@ class Thread:
 
 sarah = User(mod_status=False, username='sarah119')
 moto_thread = Thread('motorcycles are cool', 'things that are cool')
-sarahs_vote = sarah.upvote_thread(moto_thread, 'now')
+sarahs_vote = sarah.upvote_thread(moto_thread)
 print(sarahs_vote.is_deleted)
 sarahs_vote.delete()
 print(sarahs_vote.is_deleted)
